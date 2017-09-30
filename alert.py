@@ -22,10 +22,10 @@ import argparse
 from twilio.rest import Client
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 APPNAME = 'Twilio Alert Script'
-DESTINY_CONFIG_FILE = '/usr/local/etc/alert.json'
-DESTINY_LOGFILE = '/var/log/alert.log'
+ALERT_CONFIG_FILE = '/usr/local/etc/alert.json'
+ALERT_LOGFILE = '/var/log/alert.log'
 
 
 def config_args():
@@ -35,9 +35,9 @@ def config_args():
     parser = argparse.ArgumentParser(description=APPNAME,
         epilog=("Version {}".format(__version__)))
     parser.add_argument('-c', metavar='CONFIGFILE', required=False, help='path to config file',
-        default=DESTINY_CONFIG_FILE)
+        default=ALERT_CONFIG_FILE)
     parser.add_argument('--log', metavar='LOGFILE', required=False, help='path to log file',
-        default=DESTINY_LOGFILE)
+        default=ALERT_LOGFILE)
     parser.add_argument('--version', action='version', version=('%(prog)s ' + __version__))
     parser.add_argument('--debug', required=False, help='Enable debugging of this script', action="store_true")
     args = parser.parse_args()
