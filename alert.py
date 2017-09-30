@@ -1,5 +1,16 @@
 #!/usr/bin/env python
 
+
+"""
+Alert script for server notifications via Twilio
+
+https://www.twilio.com/docs/quickstart/python/
+
+sudo pip install twilio
+
+"""
+
+
 import os
 import sys
 import json
