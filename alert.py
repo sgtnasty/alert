@@ -19,6 +19,7 @@ import datetime
 import logging
 import errno
 import argparse
+from twilio.rest import Client
 
 
 __version__ = '0.0.1'
@@ -93,9 +94,20 @@ def config_alert(args, log):
         log.debug("config=%s" % repr(config))
     return config
 
+def run(args, log, config):
+    # Get these credentials from http://twilio.com/user/account
+    client = Client(config["account_sid"], config["auth_token"])
+    log.debug('twilio client: {}'.format(repr(client)))
+    # Make the call
+    call = client.api.account.calls.create(to = config["callto"], 
+        from_ = config["callfrom"], url = config["url"])
+    log.debug('twilio call: {}'.format(repr(call)))
+    log.info('call placed: {}'.format(call.sid))
+
 
 if __name__ == '__main__':
     args = config_args()
     log = config_log(args)
     alert_cfg = config_alert(args, log)
     log.info('{} version {}'.format(APPNAME, __version__))
+    run(args, log, alert_cfg)

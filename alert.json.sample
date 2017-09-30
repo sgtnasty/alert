@@ -1,4 +1,8 @@
 {
     "NOTE": "this is a sample json file, remove the .sample from the filename to use",
-    "auth-token": "Not-here"
+    "account_sid": "put your own id here",
+    "auth_token": "put your own id here",
+    "callto": "put your own phone here",
+    "callfrom": "put your own phone here",
+    "url": "put your own here"
 }
