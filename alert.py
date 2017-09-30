@@ -95,6 +95,7 @@ def config_alert(args, log):
     return config
 
 def run(args, log, config):
+    log.debug('twilio version: {}'.format(twilio.__version__))
     # Get these credentials from http://twilio.com/user/account
     client = Client(config["account_sid"], config["auth_token"])
     log.debug('twilio client: {}'.format(repr(client)))
